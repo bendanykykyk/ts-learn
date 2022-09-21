@@ -118,6 +118,30 @@ function deconstruct(
   }: {name: string; age?: number; restArgs?: string[]} = {name: "yk"}
 ): void {}
 
+//  拓展: 函数内部的 this
+interface Card {
+  suit: string;
+  card: number;
+}
+interface Deck {
+  suits: string[];
+  cards: number[];
+  createCardPicker(this: Deck): () => Card;
+}
+let deck = {
+  suits: ["hearts", "spades", "clubs", "diamonds"],
+  cards: Array(52),
+  //   这里的this 如果不给Deck类型，并且设置了     "noImplicitThis": false,   就会报错
+  createCardPicker: function (this: Deck) {
+    return () => {
+      let pickedCard = Math.floor(Math.random() * 52);
+      let pickedSuit = Math.floor(pickedCard / 13);
+
+      return {suit: this.suits[pickedSuit], card: pickedCard % 13};
+    };
+  },
+};
+
 /**************      *******************/
 
 /**************  类型注解的小伙伴 2.1 类型推论       *******************/
