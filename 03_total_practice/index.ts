@@ -76,3 +76,24 @@ a = "123";
 console.log(a.split(""));
 a = 3;
 console.log(a.toString());
+
+/**************       *******************/
+
+/**************   3.1 interface初识    *******************/
+interface Person {
+  name: string;
+  // 只读
+  readonly id: number;
+  // 可选
+  age?: number;
+  // 任意值以及任意类型
+  [propName: string]: any;
+}
+let person: Person = {
+  id: 123,
+  name: "yk",
+  wifeName: "meinv", // 任意值 任意类型
+  wifeAge: 18, // 任意值 任意类型
+};
+//* person.id = 1234;
+/**************      *******************/
