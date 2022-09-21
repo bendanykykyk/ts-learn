@@ -131,7 +131,7 @@ interface Deck {
 let deck = {
   suits: ["hearts", "spades", "clubs", "diamonds"],
   cards: Array(52),
-  //   这里的this 如果不给Deck类型，并且设置了     "noImplicitThis": false,   就会报错
+  //   这里的this 如果不给Deck类型，并且设置了     "noImplicitThis": false,   可以指定this为参数，并且给this注解类型的方式，来注解this 解决this模糊问题
   createCardPicker: function (this: Deck) {
     return () => {
       let pickedCard = Math.floor(Math.random() * 52);
