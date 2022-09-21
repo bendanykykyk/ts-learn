@@ -95,6 +95,28 @@ let numberArr3: List = [2, 3, 4, 5];
 /**************      *******************/
 
 /**************   1.2.3 函数的注解   *******************/
+// 方式一: 函数方式
+function foo(x: number, y: string) {
+  console.log(x, y);
+}
+// 方式二: 表达式方式
+type Foo = (x: number, y: string) => void;
+const foo2: Foo = function (x, y) {
+  return x + y;
+};
+
+// 函数参数可选/默认参数/rest参数
+function bar(name: string = "yk", age?: number, ...restArgs: string[]): void {}
+
+// 拓展：函数参数解构后的注解 可选 默认值 以及剩余参数
+
+function deconstruct(
+  {
+    name,
+    age,
+    ...restArgs
+  }: {name: string; age?: number; restArgs?: string[]} = {name: "yk"}
+): void {}
 
 /**************      *******************/
 
