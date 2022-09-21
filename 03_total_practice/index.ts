@@ -60,6 +60,44 @@ create({name: "0"});
 //* create(true);
 //* create(undefined);
 
+/**************        *******************/
+
+/**************   1.2.1 interface初识    *******************/
+interface Person {
+  name: string;
+  // 只读
+  readonly id: number;
+  // 可选
+  age?: number;
+  // 任意值以及任意类型
+  [propName: string]: any;
+}
+let person: Person = {
+  id: 123,
+  name: "yk",
+  wifeName: "meinv", // 任意值 任意类型
+  wifeAge: 18, // 任意值 任意类型
+};
+//* person.id = 1234;
+/**************      *******************/
+
+/**************   1.2.2 数组的注解   *******************/
+let arr = [1, 2, 3];
+let numberArr: number[] = [1, 2, 3]; // 方式一
+let numberArr2: Array<number> = [1, 2, 3, 4]; // 注解方式二
+
+// 注解方式三
+interface List {
+  [index: number]: number;
+}
+let numberArr3: List = [2, 3, 4, 5];
+
+/**************      *******************/
+
+/**************   1.2.3 函数的注解   *******************/
+
+/**************      *******************/
+
 /**************  类型注解的小伙伴 2.1 类型推论       *******************/
 
 // 共有的属性不会报错
@@ -78,22 +116,3 @@ a = 3;
 console.log(a.toString());
 
 /**************       *******************/
-
-/**************   3.1 interface初识    *******************/
-interface Person {
-  name: string;
-  // 只读
-  readonly id: number;
-  // 可选
-  age?: number;
-  // 任意值以及任意类型
-  [propName: string]: any;
-}
-let person: Person = {
-  id: 123,
-  name: "yk",
-  wifeName: "meinv", // 任意值 任意类型
-  wifeAge: 18, // 任意值 任意类型
-};
-//* person.id = 1234;
-/**************      *******************/
