@@ -1,4 +1,4 @@
-/************** 1.1原始数据类型 *******************/
+/************** 类型注解 1.1原始数据类型 *******************/
 //  布尔值
 let isDone: boolean = false;
 // 数字
@@ -60,4 +60,19 @@ create({name: "0"});
 //* create(true);
 //* create(undefined);
 
-/**************           *******************/
+/**************  类型注解的小伙伴 2.1 类型推论       *******************/
+
+// 共有的属性不会报错
+function test(a: number | string) {
+  // 共有的不会报错
+  return a.toString();
+  // 非共有的话就会报错
+  //* return a.split(',')
+}
+// 在赋值(个人感觉是被调用的时候)的时候，确认类型
+type strOrNumber = string | number;
+let a: strOrNumber;
+a = "123";
+console.log(a.split(""));
+a = 3;
+console.log(a.toString());
