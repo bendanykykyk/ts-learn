@@ -142,6 +142,17 @@ let deck = {
   },
 };
 
+// 拓展 : 函数的重载 - 其实就是为了表述的更加清楚，上面两个就叫做重载，最后一个代表真实的实现
+function reverseWords(words: string): string;
+function reverseWords(words: number): number;
+function reverseWords(words: string | number): string | number {
+  if (typeof words == "string") {
+    return words.split("").reverse().join("");
+  } else {
+    return Number(words.toString().split("").reverse().join(""));
+  }
+}
+
 /**************      *******************/
 
 /**************  类型注解的小伙伴 2.1 类型推论       *******************/
