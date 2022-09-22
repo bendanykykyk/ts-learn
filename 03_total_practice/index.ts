@@ -181,6 +181,30 @@ class Snake extends Animal {
   }
 }
 
+// 类的修饰符
+// public : 不写修饰符的话就是public，没有任何限制
+// private : 成员属性私有，子类和实例中都无法调用
+// protected : 成员属性派生类都能用，实例？
+class Shape {
+  public name: string;
+  public constructor(theName: string) {
+    this.name = theName;
+  }
+  protected move(distanceInMeters: number) {
+    console.log(`${this.name} moved ${distanceInMeters}m.`);
+  }
+}
+// 在子类中的表现
+class Triangle extends Shape {
+  public constructor(theName: string) {
+    super(theName);
+  }
+  public move(distanceInMeters: number) {
+    console.log(`${this.name}`);
+  }
+}
+//* new Shape("三角").move(5);
+
 /**************      *******************/
 
 /**************  类型注解的小伙伴 2.1 类型推论       *******************/
