@@ -155,6 +155,34 @@ function reverseWords(words: string | number): string | number {
 
 /**************      *******************/
 
+/**************   1.2.4 类的注解   *******************/
+// 类的注解
+// 父类，基类
+class Animal {
+  name: string;
+  constructor(theName: string) {
+    this.name = theName;
+  }
+  move(distanceInMeters: number = 0) {
+    console.log(`${this.name} moved ${distanceInMeters}m.`);
+  }
+}
+// 子类继承后的注解
+// 子类，派生类
+class Snake extends Animal {
+  constructor(name: string) {
+    //   这里的super指代的是父类的构造器
+    super(name);
+  }
+  move(distanceInMeters = 5) {
+    console.log("Slithering...");
+    //   这里的super是父类
+    super.move(distanceInMeters);
+  }
+}
+
+/**************      *******************/
+
 /**************  类型注解的小伙伴 2.1 类型推论       *******************/
 
 // 共有的属性不会报错
