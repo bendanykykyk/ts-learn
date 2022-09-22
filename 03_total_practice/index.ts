@@ -231,8 +231,34 @@ class Employee {
 }
 let employee = new Employee("yk");
 employee.fullName = "hy";
-console.log(employee.fullName);
+//* console.log(employee.fullName);
 
+// 类的静态属性修饰符 static
+class Grid {
+  static origin = {x: 0, y: 0};
+  calculateDistanceFromOrigin(point: {x: number; y: number}) {
+    let xDist = point.x - Grid.origin.x;
+    let yDist = point.y - Grid.origin.y;
+    return Math.sqrt(xDist * xDist + yDist * yDist) / this.scale;
+  }
+  constructor(public scale: number) {}
+}
+
+let grid1 = new Grid(1.0); // 1x scale
+let grid2 = new Grid(5.0); // 5x scale
+
+/**************      *******************/
+
+/**************   1.2.4 类的注解   *******************/
+
+/**************   1.2.5 抽象类的注解   *******************/
+abstract class Fruits {
+  constructor(private name: string) {
+    this.name = name;
+  }
+
+  abstract changeColor(color: string): void;
+}
 /**************      *******************/
 
 /**************  类型注解的小伙伴 2.1 类型推论       *******************/
