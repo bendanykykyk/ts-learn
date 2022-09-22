@@ -196,6 +196,15 @@ class Shape {
     console.log(`${this.name} moved ${distanceInMeters}m.`);
   }
 }
+
+//  类的简易写法：可以不用申明name成员变量
+class Shape2 {
+  // 这里 public name 等效你在成员变量里面申明了 public name:string
+  public constructor(public name: string) {
+    this.name = name;
+  }
+}
+
 // 在子类中的表现
 class Triangle extends Shape {
   public constructor(theName: string) {
