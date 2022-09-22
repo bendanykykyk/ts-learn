@@ -52,8 +52,8 @@ function infiniteLoop(): never {
 
 /**************    1.2 非原始数据类型       *******************/
 // Object 对象
-declare function create(o: object): void;
-create({name: "0"});
+// declare function create(o: object): void;
+// create({name: "0"});
 //* create(null);
 //* create(3);
 //* create("string");
@@ -204,7 +204,6 @@ class Shape2 {
     this.name = name;
   }
 }
-
 // 在子类中的表现
 class Triangle extends Shape {
   public constructor(theName: string) {
@@ -217,6 +216,22 @@ class Triangle extends Shape {
 //* new Shape("三角").move(5);
 let shape = new Shape("四角");
 // shape.name = "123";
+
+// 类中的存取器
+class Employee {
+  constructor(private name: string) {
+    this.name = name;
+  }
+  get fullName() {
+    return "你好 " + this.name;
+  }
+  set fullName(val) {
+    this.name = val;
+  }
+}
+let employee = new Employee("yk");
+employee.fullName = "hy";
+console.log(employee.fullName);
 
 /**************      *******************/
 
