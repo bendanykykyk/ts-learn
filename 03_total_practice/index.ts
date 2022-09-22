@@ -185,8 +185,10 @@ class Snake extends Animal {
 // public : 不写修饰符的话就是public，没有任何限制
 // private : 成员属性私有，子类和实例中都无法调用
 // protected : 成员属性派生类都能用，实例？
+
+// readonly : 让成员属性变为只读
 class Shape {
-  public name: string;
+  public readonly name: string;
   public constructor(theName: string) {
     this.name = theName;
   }
@@ -204,6 +206,8 @@ class Triangle extends Shape {
   }
 }
 //* new Shape("三角").move(5);
+let shape = new Shape("四角");
+// shape.name = "123";
 
 /**************      *******************/
 
