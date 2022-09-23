@@ -168,7 +168,65 @@ class Employee {
 }
 let employee = new Employee("yk");
 employee.fullName = "hy";
-console.log(employee.fullName);
+//* console.log(employee.fullName);
+// 类的静态属性修饰符 static
+class Grid {
+    constructor(scale) {
+        this.scale = scale;
+    }
+    calculateDistanceFromOrigin(point) {
+        let xDist = point.x - Grid.origin.x;
+        let yDist = point.y - Grid.origin.y;
+        return Math.sqrt(xDist * xDist + yDist * yDist) / this.scale;
+    }
+}
+Grid.origin = { x: 0, y: 0 };
+let grid1 = new Grid(1.0); // 1x scale
+let grid2 = new Grid(5.0); // 5x scale
+/**************      *******************/
+/**************   1.2.5 抽象类的注解   *******************/
+class Department {
+    constructor(name) {
+        this.name = name;
+    }
+    printName() {
+        console.log("Department name: " + this.name);
+    }
+}
+class AccountingDepartment extends Department {
+    constructor() {
+        super("Accounting and Auditing"); // 在派生类的构造函数中必须调用 super()
+    }
+    printMeeting() {
+        console.log("The Accounting Department meets each Monday at 10am.");
+    }
+    generateReports() {
+        console.log("Generating accounting reports...");
+    }
+}
+let department; // 允许创建一个对抽象类型的引用
+// department = new Department(); // 错误: 不能创建一个抽象类的实例
+department = new AccountingDepartment(); // 允许对一个抽象子类进行实例化和赋值
+department.printName();
+department.printMeeting();
+//* department.generateReports(); // 错误: 方法在声明的抽象类中不存在(因为有Department这个类型注释约束)
+// 高级技巧
+// 1.interface可以继承类
+class Point {
+    // x: number;
+    // y: number;
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.x = x;
+        this.y = y;
+    }
+}
+let point3d = { x: 1, y: 1, z: 2 };
+// 2.类可以作为 类型
+let point2d = { x: 1, y: 1 };
+// 3.类可以作为 构造函数
+console.log(typeof Point);
 /**************      *******************/
 /**************  类型注解的小伙伴 2.1 类型推论       *******************/
 // 共有的属性不会报错
