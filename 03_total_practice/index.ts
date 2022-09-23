@@ -79,6 +79,7 @@ let person: Person = {
   wifeAge: 18, // 任意值 任意类型
 };
 //* person.id = 1234;
+
 /**************      *******************/
 
 /**************   1.2.2 数组的注解   *******************/
@@ -91,6 +92,10 @@ interface List {
   [index: number]: number;
 }
 let numberArr3: List = [2, 3, 4, 5];
+
+// 补充：如何写一个只读的数组？
+let readonlyArr: ReadonlyArray<number> = [1, 2, 3, 4];
+//*  readonlyArr[2] = 5 不能修改
 
 /**************      *******************/
 
