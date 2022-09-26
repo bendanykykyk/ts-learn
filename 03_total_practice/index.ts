@@ -182,6 +182,23 @@ function createClock(c: ClockConstructor, date: Date): ClockConstructor {
   return new c(date);
 }
 
+// interface可以继承interface
+
+interface Stone {
+  smash(): void;
+}
+
+interface Paper {
+  flutter(): void;
+}
+
+interface LikeStonePaper extends Paper, Stone {
+  name: string;
+}
+
+let myObj = <LikeStonePaper>{};
+myObj.name = "1";
+
 let clock = createClock(Clock, new Date()); // 注意一下这里，如果静态部分需要检查，例如constructor 可以传入这个构造函数到 函数中，并且写一个interface 描述constructor
 console.log(clock);
 /**************      *******************/
