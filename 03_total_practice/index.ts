@@ -80,6 +80,110 @@ let person: Person = {
 };
 //* person.id = 1234;
 
+// 使用interface注解函数类型
+interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+let mySearch: SearchFunc = (sourceA: string, str: string) => {
+  return sourceA.search(str) > -1;
+};
+
+// 使用interface注解可索引的类型接口
+interface NumberArr {
+  [index: number]: number;
+}
+
+let obj2: NumberArr = {
+  0: 1,
+  1: 2,
+  2: 3,
+};
+obj2[2];
+
+class Game {
+  constructor(public name: string = "hah") {
+    this.name = name;
+  }
+}
+
+class Mario extends Game {
+  // author: string;
+  constructor(public author: string) {
+    super();
+    this.author = author;
+  }
+}
+// 错误：使用数值型的字符串索引，有时会得到完全不同的Animal!
+// interface NotOkay {
+//   // 这里的string和number叫签名；这里为什么父类的签名肯定是string，子类的是number，因为父类的范围明显更大，而子类的number会转化为string，number范围更小，一一对应；
+//   [x: string]: Game;
+//   [x: number]: Mario;
+// }
+
+// let playList: NotOkay = {
+//   0: new Mario("heihei"),
+//   1: new Mario("heihei2"),
+//   2: new Game("wuhu"),
+// };
+
+// 索引和propName
+
+interface Friend {
+  [index: string]: string;
+  age: string;
+  [propName: number]: string;
+}
+
+// 类类型
+
+interface Alarm {
+  alert(): void;
+}
+
+interface Light {
+  lightOn(): void;
+  lightOff(): void;
+}
+
+class Door implements Alarm, Light {
+  lightOn(): void {
+    console.log("我亮了");
+  }
+  lightOff(): void {
+    console.log("我暗了");
+  }
+  alert(): void {
+    console.log("我响了");
+  }
+}
+
+class SecurityDoor extends Door {}
+
+let myDoor = new SecurityDoor();
+myDoor.alert();
+
+// 类的静态部分与实例部分的区别(静态部分是不能参与检查的，比如constructor；注意这里的静态部分和修饰符中的static概念不一样)
+
+interface ClockInterface {
+  currentTime: Date;
+}
+interface ClockConstructor {
+  new (date: Date): any;
+}
+
+class Clock implements ClockInterface {
+  currentTime: Date;
+  constructor(currentTime: Date) {
+    this.currentTime = currentTime;
+  }
+}
+
+function createClock(c: ClockConstructor, date: Date): ClockConstructor {
+  return new c(date);
+}
+
+let clock = createClock(Clock, new Date()); // 注意一下这里，如果静态部分需要检查，例如constructor 可以传入这个构造函数到 函数中，并且写一个interface 描述constructor
+console.log(clock);
 /**************      *******************/
 
 /**************   1.2.2 数组的注解   *******************/

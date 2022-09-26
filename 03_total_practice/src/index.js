@@ -55,13 +55,63 @@ let person = {
     wifeName: "meinv",
     wifeAge: 18, // 任意值 任意类型
 };
-//* person.id = 1234;
+let mySearch = (sourceA, str) => {
+    return sourceA.search(str) > -1;
+};
+let obj2 = {
+    0: 1,
+    1: 2,
+    2: 3,
+};
+obj2[2];
+class Game {
+    constructor(name = "hah") {
+        this.name = name;
+        this.name = name;
+    }
+}
+class Mario extends Game {
+    // author: string;
+    constructor(author) {
+        super();
+        this.author = author;
+        this.author = author;
+    }
+}
+class Door {
+    lightOn() {
+        console.log("我亮了");
+    }
+    lightOff() {
+        console.log("我暗了");
+    }
+    alert() {
+        console.log("我响了");
+    }
+}
+class SecurityDoor extends Door {
+}
+let myDoor = new SecurityDoor();
+myDoor.alert();
+class Clock {
+    constructor(currentTime) {
+        this.currentTime = currentTime;
+    }
+}
+function createClock(c, date) {
+    return new c(date);
+}
+let clock = createClock(Clock, new Date());
+console.log(clock.currentTime);
 /**************      *******************/
 /**************   1.2.2 数组的注解   *******************/
 let arr = [1, 2, 3];
 let numberArr = [1, 2, 3]; // 方式一
 let numberArr2 = [1, 2, 3, 4]; // 注解方式二
 let numberArr3 = [2, 3, 4, 5];
+// 补充：如何写一个只读的数组？
+let readonlyArr = [1, 2, 3, 4];
+//*  readonlyArr[2] = 5 不能修改
 /**************      *******************/
 /**************   1.2.3 函数的注解   *******************/
 // 方式一: 函数方式
@@ -226,7 +276,7 @@ let point3d = { x: 1, y: 1, z: 2 };
 // 2.类可以作为 类型
 let point2d = { x: 1, y: 1 };
 // 3.类可以作为 构造函数
-console.log(typeof Point);
+console.log(typeof Point == "function");
 /**************      *******************/
 /**************  类型注解的小伙伴 2.1 类型推论       *******************/
 // 共有的属性不会报错
