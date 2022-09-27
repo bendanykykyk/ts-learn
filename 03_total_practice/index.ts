@@ -169,6 +169,8 @@ interface ClockInterface {
 }
 interface ClockConstructor {
   new (date: Date): any;
+  getTime(): void;
+  // 应用1：之前学过 这个其实就是混合类型(函数类型+对象类型)
 }
 
 class Clock implements ClockInterface {
@@ -176,6 +178,8 @@ class Clock implements ClockInterface {
   constructor(currentTime: Date) {
     this.currentTime = currentTime;
   }
+  // 应用1：假设我们现在需要验证静态的属性或者函数
+  // static getTime() {}
 }
 
 function createClock(c: ClockConstructor, date: Date): ClockConstructor {
@@ -201,6 +205,22 @@ myObj.name = "1";
 
 let clock = createClock(Clock, new Date()); // 注意一下这里，如果静态部分需要检查，例如constructor 可以传入这个构造函数到 函数中，并且写一个interface 描述constructor
 console.log(clock);
+
+// 混合类型：在函数类型的interface上增加了属性的生命
+
+interface Counter {
+  (start: number): string;
+  number: number;
+}
+function getNumber(num1: number, num2: number): Counter {
+  let counter = <Counter>function (start: number) {};
+  counter.number = 4;
+  return counter;
+}
+// const getNumber: Counter = (num1: number, num2: number) => {
+//   return num1 + num2;
+// };
+
 /**************      *******************/
 
 /**************   1.2.2 数组的注解   *******************/
