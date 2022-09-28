@@ -2,7 +2,7 @@
  * @Author: [yuuki]
  * @Date: 2022-09-27 10:00:53
  * @LastEditors: [you name]
- * @LastEditTime: 2022-09-28 13:40:39
+ * @LastEditTime: 2022-09-28 15:52:33
  * @Description:
  */
 /************** 类型注解 1.1原始数据类型 *******************/
@@ -58,9 +58,19 @@ function infiniteLoop(): never {
 
 // 元组 Tuple
 let x: [string, number] = ["1", 2];
-// x[2] = 3; //直接赋值 nonono
+// x[2] = 3; //直接赋值 no no no
 // x.push(3); // 这里可以push 值，注意
 // x.push(boolean); // 报错，因为越界后的类型必须是一开始申明的类型 string和number
+
+// 元组 可选的元素类型
+let list: [number, string?, boolean?];
+list = [0, "1"];
+list = [0];
+// 元组高阶使用技巧
+declare function test2(...args: [number, string, boolean]): void; // =>  arg1:number, arg2:string,arg3:boolean
+let list3: [string, ...number[]] = ["1", 2, 3, 4];
+let list4: [number, ...string[]] = [1, "2", "3", "4"];
+
 /**************           *******************/
 
 /**************    1.2 非原始数据类型       *******************/

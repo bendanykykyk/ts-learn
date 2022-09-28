@@ -32,3 +32,4 @@ var n = jim.name;
 jim.log();
 
 // 联合类型
+type unionNumStr = string | number;
