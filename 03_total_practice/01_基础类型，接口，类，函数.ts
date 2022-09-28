@@ -2,7 +2,7 @@
  * @Author: [yuuki]
  * @Date: 2022-09-27 10:00:53
  * @LastEditors: [you name]
- * @LastEditTime: 2022-09-27 10:00:54
+ * @LastEditTime: 2022-09-28 13:40:39
  * @Description:
  */
 /************** 类型注解 1.1原始数据类型 *******************/
@@ -55,6 +55,12 @@ function fail() {
 function infiniteLoop(): never {
   while (true) {}
 }
+
+// 元组 Tuple
+let x: [string, number] = ["1", 2];
+// x[2] = 3; //直接赋值 nonono
+// x.push(3); // 这里可以push 值，注意
+// x.push(boolean); // 报错，因为越界后的类型必须是一开始申明的类型 string和number
 /**************           *******************/
 
 /**************    1.2 非原始数据类型       *******************/
