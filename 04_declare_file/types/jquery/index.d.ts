@@ -30,5 +30,4 @@ declare class Animal {
 type GreetingLike = string | (() => string);
 
 declare function greet(g: GreetingLike): void;
-
 export {jQuery, GreetingSettings, myLib, Animal, greet};
