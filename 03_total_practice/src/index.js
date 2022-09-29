@@ -1,36 +1,69 @@
 "use strict";
-/**************   3 泛型       *******************/
-// 3.1 泛型变量 T
-function createSentence(arg) {
-    return "我的长度是:" + arg.length;
+// 枚举
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 3] = "Red";
+    Color[Color["Green"] = 4] = "Green";
+    Color[Color["Blue"] = 5] = "Blue";
+})(Color || (Color = {}));
+let c = Color.Green;
+console.log(Color.Red);
+console.log(Color.Green);
+var Response2;
+(function (Response2) {
+    Response2[Response2["No"] = 0] = "No";
+    Response2[Response2["Yes"] = 1] = "Yes";
+})(Response2 || (Response2 = {}));
+function respond(recipient, message) {
+    // ...
+    //   console.log("枚举值：" + message);
 }
-console.log(createSentence([1, 2, 3]));
-// 3.2 泛型类型
-function genericIdentity(str) {
-    console.log(str);
-    return str;
+console.log(Response2.No);
+respond("Princess Caroline", Response2.No);
+function getSomeValue() {
+    return 0;
 }
-// 这个就是泛型类型的注解
-let generics1 = genericIdentity;
-// 3.2.1 泛型字面量
-let generics2 = genericIdentity;
-let generics3 = genericIdentity;
-// 3.3 泛型类
-class GenericNumber {
-    constructor() {
-        this.list = [];
-    }
-    add(item) {
-        this.list.push(item);
-    }
-    min() {
-        // 最小值
-        return this.list.sort()[0];
-    }
-}
-let number = new GenericNumber();
-number.add(4);
-number.add(5);
-number.add(3);
-console.log(number.list);
-console.log(number.min());
+// 定义值的地方可以是一个方法的返回值。计算的话，必须放到最后一位
+var E;
+(function (E) {
+    E[E["B"] = 0] = "B";
+    E[E["A"] = getSomeValue()] = "A";
+})(E || (E = {}));
+console.log("A:" + E.A);
+var ShapeKind;
+(function (ShapeKind) {
+    ShapeKind[ShapeKind["Circle"] = 0] = "Circle";
+    ShapeKind[ShapeKind["Square"] = 1] = "Square";
+})(ShapeKind || (ShapeKind = {}));
+let c2 = {
+    kind: ShapeKind.Circle,
+    //    ~~~~~~~~~~~~~~~~ Error!
+    radius: 100,
+};
+// enum F {
+//   Foo,
+//   Bar,
+// }
+// function f(x: F) {
+//   if (x !== F.Foo || x !== F.Bar) {
+//     // Error! Operator '!==' cannot be applied to types 'E.Foo' and 'E.Bar'.
+//   }
+// }
+// enum H {
+//   X,
+//   Y,
+//   Z,
+// }
+// function f(obj: {X: number}) {
+//   return obj.X;
+// }
+// f(H);
+// 反向映射
+var Enum2;
+(function (Enum2) {
+    Enum2[Enum2["A"] = 0] = "A";
+})(Enum2 || (Enum2 = {}));
+let a2 = Enum2.A;
+let nameOfA = Enum2[a2]; // "A"
+console.log(1 /* A */);
+console.log(2 /* B */);

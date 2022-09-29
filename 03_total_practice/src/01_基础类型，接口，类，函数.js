@@ -14,7 +14,7 @@ var __rest = (this && this.__rest) || function (s, e) {
  * @Author: [yuuki]
  * @Date: 2022-09-27 10:00:53
  * @LastEditors: [you name]
- * @LastEditTime: 2022-09-27 10:00:54
+ * @LastEditTime: 2022-09-28 15:52:33
  * @Description:
  */
 /************** 类型注解 1.1原始数据类型 *******************/
@@ -56,6 +56,17 @@ function fail() {
 function infiniteLoop() {
     while (true) { }
 }
+// 元组 Tuple
+let x = ["1", 2];
+// x[2] = 3; //直接赋值 no no no
+// x.push(3); // 这里可以push 值，注意
+// x.push(boolean); // 报错，因为越界后的类型必须是一开始申明的类型 string和number
+// 元组 可选的元素类型
+let list;
+list = [0, "1"];
+list = [0];
+let list3 = ["1", 2, 3, 4];
+let list4 = [1, "2", "3", "4"];
 let person = {
     id: 123,
     name: "yk",
